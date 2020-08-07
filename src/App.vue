@@ -8,7 +8,7 @@
 </template>
 
 <script>
-import CharacterPage from './components/characterPage.vue'
+import CharacterPage from './components/characterPage'
 
 export default {
   name: 'App',
