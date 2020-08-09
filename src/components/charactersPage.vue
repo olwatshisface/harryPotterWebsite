@@ -1,6 +1,7 @@
 <template>
   <div>
-    <h1>Characters</h1>
+    <h1 v-if="houseName">Members</h1>
+    <h1 v-else>Characters</h1>
     <table v-if="characters.length > 0" id="characters">
       <tr>
         <th v-for="{display} in characterKeysAndFormatterHeaders" :key="display">{{display}}</th>
