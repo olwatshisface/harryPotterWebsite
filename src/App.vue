@@ -26,7 +26,7 @@
     </div>
     <CharactersPage :api-key="apiKey" v-if="showCharacters" />
     <SpellsPage :api-key="apiKey" v-if="showSpells" />
-    <!-- the :key attribute is so Vue will watch for changes (select a house then select a different house), so it can rerender the HousePage -->
+    <!-- the :key attribute is so Vue will watch for changes (select a house then select a different house) -->
     <HousePage :api-key="apiKey" :selected-house="selectedHouse" v-if="showHouse" :key="selectedHouse.name" />
   </div>
 </template>
@@ -76,7 +76,7 @@ export default {
     };
   },
   mounted() {
-    // the house page needs id and name of selected house, so get those ready ahead of time
+    // the house page needs id and name of selected house, so get those as soon as possible
     axios
       .get("https://www.potterapi.com/v1/houses?key=" + this.apiKey)
       .then(

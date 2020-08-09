@@ -32,6 +32,7 @@ export default {
      errored: false,
     };
   },
+  //get spell information as soon in the lifecycle as possible
   mounted() {
     axios
       .get("https://www.potterapi.com/v1/spells?key=" + this.apiKey)

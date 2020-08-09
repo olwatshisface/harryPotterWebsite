@@ -45,9 +45,10 @@ export default {
       errored: false,
     };
   },
+  //get character information as soon in the lifecycle as possible
   mounted() {
     const url =
-    // if on the house page get characters by house name
+    // if on the house page get characters by house name else get all characters
       this.houseName
         ?
          "https://www.potterapi.com/v1/characters?key=" + this.apiKey + "&house=" + this.houseName

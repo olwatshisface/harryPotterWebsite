@@ -44,8 +44,8 @@ export default {
       errored: false,
     };
   },
-  methods: {},
-  created() {
+  //get house information as soon in the lifecycle as possible
+  mounted() {
     axios
       .get("https://www.potterapi.com/v1/houses/" + this.selectedHouse._id + "?key=" + this.apiKey)
       .then((response) => this.houses = response.data) 
