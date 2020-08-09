@@ -17,7 +17,7 @@
           <a href="#" @click="houseSelected('Gryffindor')">Gryffindor</a>
           <a href="#" @click="houseSelected('Ravenclaw')">Ravenclaw</a>
           <a href="#" @click="houseSelected('Slytherin')">Slytherin</a>
-          <a href="#" @click="houseSelected('HufflePuff')">Hufflepuff</a>
+          <a href="#" @click="houseSelected('Hufflepuff')">Hufflepuff</a>
         </div>
       </div>
       <div>
@@ -48,7 +48,7 @@ export default {
   methods: {
     houseSelected(name) {
       this.resetVisibility();
-      this.selectedHouse = find(this.houseData, { name: name });
+      this.selectedHouse = find(this.houseData, { 'name': name });
       this.showHouse = true;
     },
     charactersSelected() {

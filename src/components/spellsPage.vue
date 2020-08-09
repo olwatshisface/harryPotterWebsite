@@ -45,6 +45,7 @@ export default {
 </script>
 
 <style scoped>
+/* this could be a mixin it's the same for all 3 pages */
 #spells {
   font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
   border-collapse: collapse;
