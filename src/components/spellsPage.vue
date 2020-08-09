@@ -3,11 +3,11 @@
     <h1>Spells</h1>
     <table v-if="spells.length > 0" id="spells">
       <tr>
-        <th v-for="{display} in tableHeadersAndSpellKeys" :key="display">{{display}}</th>
+        <th v-for="{display} in spellKeysAndTableHeaders" :key="display">{{display}}</th>
       </tr>
       <tr></tr>
       <tr v-for="spell in spells" :key="spell._id">
-        <td v-for="{value} in tableHeadersAndSpellKeys" :key="value">{{spell[value]}}</td>
+        <td v-for="{value} in spellKeysAndTableHeaders" :key="value">{{spell[value]}}</td>
       </tr>
     </table>
     <h2 class="error" v-if="errored">There was a problem retreiving the spells</h2>
@@ -15,6 +15,7 @@
 </template>
 <script>
 import axios from "axios";
+
 export default {
   name: "spellsPage",
   props: {
@@ -23,8 +24,7 @@ export default {
   data() {
     return {
       spells: [],
-      //this needs a new name
-      tableHeadersAndSpellKeys: [
+      spellKeysAndTableHeaders: [
         { value: "spell", display: "Spell" },
         { value: "type", display: "Type" },
         { value: "effect", display: "Effect" },
@@ -69,7 +69,7 @@ th {
 #spells th {
   padding-top: 12px;
   padding-bottom: 12px;
-  background-color: #4caf50;
+  background-color: #7c807c;
   color: white;
 }
 

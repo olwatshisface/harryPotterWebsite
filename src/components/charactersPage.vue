@@ -3,11 +3,11 @@
     <h1>Characters</h1>
     <table v-if="characters.length > 0" id="characters">
       <tr>
-        <th v-for="{display} in tableHeadersAndCharacterKeys" :key="display">{{display}}</th>
+        <th v-for="{display} in characterKeysAndFormatterHeaders" :key="display">{{display}}</th>
       </tr>
       <tr></tr>
       <tr v-for="character in characters" :key="character._id">
-        <td v-for="{value} in tableHeadersAndCharacterKeys" :key="value">{{character[value]}}</td>
+        <td v-for="{value} in characterKeysAndFormatterHeaders" :key="value">{{character[value]}}</td>
       </tr>
     </table>
     <h1 class="error" v-if="errored">There was a problem retreiving the characters</h1>
@@ -24,8 +24,7 @@ export default {
   data() {
     return {
       characters: [],
-      //this needs a new name
-      tableHeadersAndCharacterKeys: [
+      characterKeysAndFormatterHeaders: [
         { value: "name", display: "Name" },
         { value: "house", display: "House" },
         { value: "patronus", display: "Patronus" },
@@ -47,6 +46,7 @@ export default {
   },
   mounted() {
     const url =
+    // if on the house page get characters by house name
       this.houseName
         ?
          "https://www.potterapi.com/v1/characters?key=" + this.apiKey + "&house=" + this.houseName
@@ -87,7 +87,7 @@ export default {
 #characters th {
   padding-top: 12px;
   padding-bottom: 12px;
-  background-color: #4caf50;
+  background-color: #7c807c;
   color: white;
 }
 

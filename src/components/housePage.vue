@@ -1,14 +1,14 @@
 <template>
   <div>
-    <div v-if="spells.length > 0">
+    <div v-if="selectedHouse">
       <h1>{{selectedHouse.name}}</h1>
-      <table id="spells">
+      <table id="house">
         <tr>
-          <th v-for="{display} in tableHeadersAndHouseKeys" :key="display">{{display}}</th>
+          <th v-for="{display} in houseKeysandFormattedHeaders" :key="display">{{display}}</th>
         </tr>
         <tr></tr>
-        <tr v-for="spell in spells" :key="spell._id">
-          <td v-for="{value} in tableHeadersAndHouseKeys" :key="value">{{spell[value]}}</td>
+        <tr v-for="house in houses" :key="house._id">
+          <td v-for="{value} in houseKeysandFormattedHeaders" :key="value">{{house[value]}}</td>
         </tr>
       </table>
       <CharactersPage :house-name="selectedHouse.name" :api-key="apiKey" />
@@ -18,8 +18,8 @@
 </template>
 <script>
 import CharactersPage from "./charactersPage";
-
 import axios from "axios";
+
 export default {
   name: "housePage",
   components: {
@@ -31,15 +31,13 @@ export default {
   },
   data() {
     return {
-      spells: [],
-      //this needs a new name
-      tableHeadersAndHouseKeys: [
+      houses: [],
+      houseKeysandFormattedHeaders: [
         { value: "mascot", display: "Mascot" },
         { value: "headOfHouse", display: "Head Of House" },
         { value: "houseGhost", display: "House Ghost" },
         { value: "founder", display: "Founder" },
         { value: "school", display: "School" },
-        //members
         { value: "values", display: "Values" },
         { value: "colors", display: "Colors" },
       ],
@@ -50,7 +48,7 @@ export default {
   created() {
     axios
       .get("https://www.potterapi.com/v1/houses/" + this.selectedHouse._id + "?key=" + this.apiKey)
-      .then((response) => this.spells = response.data) 
+      .then((response) => this.houses = response.data) 
       .catch(e => { 
       console.log(e);  
       this.errored = true;
@@ -60,31 +58,31 @@ export default {
 </script>
 
 <style scoped>
-#spells {
+#house {
   font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
   border-collapse: collapse;
   max-width: 100%;
 }
 
-#spells td,
+#house td,
 th {
   border: 1px solid #ddd;
   padding: 8px;
   text-align: center;
 }
 
-#spells tr:nth-child(even) {
+#house tr:nth-child(even) {
   background-color: #f2f2f2;
 }
 
-#spells tr:hover {
+#house tr:hover {
   background-color: #ddd;
 }
 
-#spells th {
+#house th {
   padding-top: 12px;
   padding-bottom: 12px;
-  background-color: #4caf50;
+  background-color: #7c807c;
   color: white;
 }
 

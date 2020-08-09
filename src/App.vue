@@ -26,6 +26,7 @@
     </div>
     <CharactersPage :api-key="apiKey" v-if="showCharacters" />
     <SpellsPage :api-key="apiKey" v-if="showSpells" />
+    <!-- the :key attribute is so Vue will watch for changes (select a house then select a different house), so it can rerender the HousePage -->
     <HousePage :api-key="apiKey" :selected-house="selectedHouse" v-if="showHouse" :key="selectedHouse.name" />
   </div>
 </template>
@@ -75,6 +76,7 @@ export default {
     };
   },
   mounted() {
+    // the house page needs id and name of selected house, so get those ahead of time
     axios
       .get("https://www.potterapi.com/v1/houses?key=" + this.apiKey)
       .then(
@@ -106,7 +108,7 @@ export default {
 }
 
 .dropbtn {
-  background-color: #4caf50;
+  background-color: #b9beb9;
   color: white;
   padding: 16px;
   font-size: 16px;
@@ -146,6 +148,6 @@ export default {
 }
 
 .dropdown:hover .dropbtn {
-  background-color: #3e8e41;
+  background-color: #727272;
 }
 </style>
