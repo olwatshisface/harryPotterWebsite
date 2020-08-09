@@ -101,7 +101,7 @@ export default {
 }
 #headers {
   display: flex;
-  flex-grow: 100%;
+  flex: 1;
 }
 
 .dropbtn {
@@ -113,10 +113,11 @@ export default {
   cursor: pointer;
 }
 
-.dropdown {
+/* The container <div> - needed to position the dropdown content */
+/* .dropdown {
   position: relative;
   display: inline-block;
-}
+}  */
 
 .dropdown-content {
   display: none;

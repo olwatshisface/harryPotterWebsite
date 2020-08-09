@@ -46,14 +46,15 @@ export default {
   },
   mounted() {
     //add catch to display error
+    console.log(this.houseName);
     const url =
-      this.houseName.length > 0
-        ? "https://www.potterapi.com/v1/characters?key=" +
-          this.apiKey +
-          "&house=" +
-          this.houseName
-        : "https://www.potterapi.com/v1/characters?key=" + this.apiKey;
-    axios.get(url).then((response) => (this.characters = response.data));
+      this.houseName
+        ?
+         "https://www.potterapi.com/v1/characters?key=" + this.apiKey + "&house=" + this.houseName
+        :
+        "https://www.potterapi.com/v1/characters?key=" + this.apiKey;
+        console.log(url);
+    axios.get(url).then((response) => this.characters = response.data);
   },
 };
 </script>
