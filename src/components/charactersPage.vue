@@ -10,7 +10,7 @@
         <td v-for="{value} in tableHeadersAndCharacterKeys" :key="value">{{character[value]}}</td>
       </tr>
     </table>
-    <h2 class="error" v-else>There was a problem retreiving the characters</h2>
+    <h1 class="error" v-if="errored">There was a problem retreiving the characters</h1>
   </div>
 </template>
 <script>
@@ -42,19 +42,22 @@ export default {
         { value: "boggart", display: "Boggart" },
         { value: "animagus", display: "Animagus" },
       ],
+      errored: false,
     };
   },
   mounted() {
-    //add catch to display error
-    console.log(this.houseName);
     const url =
       this.houseName
         ?
          "https://www.potterapi.com/v1/characters?key=" + this.apiKey + "&house=" + this.houseName
         :
         "https://www.potterapi.com/v1/characters?key=" + this.apiKey;
-        console.log(url);
-    axios.get(url).then((response) => this.characters = response.data);
+    axios.get(url)
+    .then((response) => this.characters = response.data)
+    .catch(e => { 
+      console.log(e);  
+      this.errored = true;
+    });
   },
 };
 </script>
@@ -86,5 +89,10 @@ export default {
   padding-bottom: 12px;
   background-color: #4caf50;
   color: white;
+}
+
+.error {
+  font-weight: bold;
+  color:red;
 }
 </style>

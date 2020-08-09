@@ -13,7 +13,7 @@
       </table>
       <CharactersPage :house-name="selectedHouse.name" :api-key="apiKey" />
     </div>
-    <h2 class="error" v-else>There was a problem retreiving the spells</h2>
+    <h2 class="error" v-if="errored">There was a problem retreiving the House</h2>
   </div>
 </template>
 <script>
@@ -43,19 +43,18 @@ export default {
         { value: "values", display: "Values" },
         { value: "colors", display: "Colors" },
       ],
+      errored: false,
     };
   },
   methods: {},
   created() {
-    //add catch to display error
     axios
-      .get(
-        "https://www.potterapi.com/v1/houses/" +
-          this.selectedHouse._id +
-          "?key=" +
-          this.apiKey
-      )
-      .then((response) => (this.spells = response.data));
+      .get("https://www.potterapi.com/v1/houses/" + this.selectedHouse._id + "?key=" + this.apiKey)
+      .then((response) => this.spells = response.data) 
+      .catch(e => { 
+      console.log(e);  
+      this.errored = true;
+    });
   },
 };
 </script>
@@ -87,5 +86,10 @@ th {
   padding-bottom: 12px;
   background-color: #4caf50;
   color: white;
+}
+
+.error {
+  font-weight: bold;
+  color:red;
 }
 </style>

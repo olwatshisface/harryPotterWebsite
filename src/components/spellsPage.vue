@@ -10,7 +10,7 @@
         <td v-for="{value} in tableHeadersAndSpellKeys" :key="value">{{spell[value]}}</td>
       </tr>
     </table>
-    <h2 class="error" v-else>There was a problem retreiving the spells</h2>
+    <h2 class="error" v-if="errored">There was a problem retreiving the spells</h2>
   </div>
 </template>
 <script>
@@ -29,13 +29,17 @@ export default {
         { value: "type", display: "Type" },
         { value: "effect", display: "Effect" },
       ],
+     errored: false,
     };
   },
   mounted() {
-    //add catch to display error
     axios
       .get("https://www.potterapi.com/v1/spells?key=" + this.apiKey)
-      .then((response) => (this.spells = response.data));
+      .then((response) => this.spells = response.data)  
+      .catch(e => { 
+      console.log(e);  
+      this.errored = true;
+    });
   },
 };
 </script>
@@ -67,5 +71,10 @@ th {
   padding-bottom: 12px;
   background-color: #4caf50;
   color: white;
+}
+
+.error {
+  font-weight: bold;
+  color:red;
 }
 </style>

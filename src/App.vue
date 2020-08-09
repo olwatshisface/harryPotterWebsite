@@ -26,7 +26,7 @@
     </div>
     <CharactersPage :api-key="apiKey" v-if="showCharacters" />
     <SpellsPage :api-key="apiKey" v-if="showSpells" />
-    <HousePage :api-key="apiKey" :selected-house="house" v-if="showHouse" :key="house.name" />
+    <HousePage :api-key="apiKey" :selected-house="selectedHouse" v-if="showHouse" :key="selectedHouse.name" />
   </div>
 </template>
 
@@ -47,8 +47,7 @@ export default {
   methods: {
     houseSelected(name) {
       this.resetVisibility();
-      this.house = find(this.houseData, { name: name });
-      console.log(this.house);
+      this.selectedHouse = find(this.houseData, { name: name });
       this.showHouse = true;
     },
     charactersSelected() {
@@ -71,10 +70,8 @@ export default {
       showCharacters: false,
       showSpells: false,
       showHouse: false,
-      houseName: "",
-      houseId: "",
       houseData: [],
-      house: {},
+      selectedHouse: {},
     };
   },
   mounted() {
@@ -99,9 +96,13 @@ export default {
   color: #2c3e50;
   margin-top: 60px;
 }
-#headers {
+
+#headers  {
   display: flex;
-  flex: 1;
+}
+
+#headers > div {
+ flex:1;
 }
 
 .dropbtn {
@@ -113,11 +114,10 @@ export default {
   cursor: pointer;
 }
 
-/* The container <div> - needed to position the dropdown content */
-/* .dropdown {
-  position: relative;
-  display: inline-block;
-}  */
+.dropdown {
+  position: static;
+  display: block;
+} 
 
 .dropdown-content {
   display: none;
@@ -125,18 +125,20 @@ export default {
   background-color: #f9f9f9;
   min-width: 160px;
   box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
-  z-index: 1;
+  z-index: 1000;
 }
 
 .dropdown-content a {
   color: black;
   padding: 12px 16px;
   text-decoration: none;
-  display: block;
+   display:inline-flex;
+   width: 95%;
 }
 
 .dropdown-content a:hover {
   background-color: #f1f1f1;
+  width: 93%;
 }
 
 .dropdown:hover .dropdown-content {
