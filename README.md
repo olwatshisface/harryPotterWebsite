@@ -1,6 +1,10 @@
 # Harry Potter Website
 
 ## Project setup
+
+```
+download the latest version of node (if not installed already) https://nodejs.org/en/
+```
 ```
 npm install
 ```
