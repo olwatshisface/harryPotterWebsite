@@ -3,7 +3,7 @@
 ## Project setup
 
 ```
-download the latest version of node (if not installed already) https://nodejs.org/en/
+download the latest version of [Node](https://nodejs.org/en/) (if not installed already)
 ```
 ```
 npm install
