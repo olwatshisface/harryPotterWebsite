@@ -25,6 +25,7 @@ export default {
   data() {
     return {
       characters: [],
+      //keys of the data to display and properly formatted key for the header
       characterKeysAndFormatterHeaders: [
         { value: "name", display: "Name" },
         { value: "house", display: "House" },

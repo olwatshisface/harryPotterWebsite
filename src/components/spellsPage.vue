@@ -24,6 +24,7 @@ export default {
   data() {
     return {
       spells: [],
+      //keys of the data to display and properly formatted key for the header
       spellKeysAndTableHeaders: [
         { value: "spell", display: "Spell" },
         { value: "type", display: "Type" },

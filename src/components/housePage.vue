@@ -32,6 +32,7 @@ export default {
   data() {
     return {
       houses: [],
+      //keys of the data to display and properly formatted key for the header
       houseKeysandFormattedHeaders: [
         { value: "mascot", display: "Mascot" },
         { value: "headOfHouse", display: "Head Of House" },

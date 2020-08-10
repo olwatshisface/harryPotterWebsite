@@ -76,7 +76,7 @@ export default {
     };
   },
   mounted() {
-    // the house page needs id and name of selected house, so get those as soon as possible
+    // the house page needs id and name of selected house, so get those ahead of time
     axios
       .get("https://www.potterapi.com/v1/houses?key=" + this.apiKey)
       .then(
