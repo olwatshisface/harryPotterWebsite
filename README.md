@@ -2,9 +2,9 @@
 
 ## Project setup
 
-```
-download the latest version of [Node](https://nodejs.org/en/) (if not installed already)
-```
+* Download the latest version of [Node](https://nodejs.org/en/). (if not installed already)
+* Run the next 2 commands in the terminal (Powershell if Windows, Bash if Mac)
+
 ```
 npm install
 ```
@@ -12,9 +12,4 @@ npm install
 ### Compiles and hot-reloads for development
 ```
 npm run serve
-```
-
-### Compiles and minifies for production
-```
-npm run build
 ```
