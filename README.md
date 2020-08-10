@@ -3,7 +3,7 @@
 ## Project setup
 
 * Download the latest version of [Node](https://nodejs.org/en/). (if not installed already)
-* Run the next 2 commands in the terminal (Powershell if Windows, Bash if Mac)
+* Run the commands in the terminal (Powershell if Windows, Bash if Mac)
 
 ```
 npm install
